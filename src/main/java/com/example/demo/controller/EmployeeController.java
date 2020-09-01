@@ -24,6 +24,7 @@ public class EmployeeController {
     @GetMapping("/getAddNewEmployeeForm")
     public String getAddNewEmployeeForm(Model model) {
         model.addAttribute("employee", employeeService.getNewEmployee());
+        System.out.println("ssssssssssssss");
         return "save_employee";
     }
 
