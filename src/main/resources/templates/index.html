@@ -55,6 +55,9 @@
         </tr>
         </tbody>
     </table>
+    <div th:if="${message}">
+        <div id="flash" class="alert alert-success" role="alert" th:text="${message}"></div>
+    </div>
 
 </div>
 
@@ -89,5 +92,11 @@
             }
         });
     }
+
+    $(function() {
+        $('#flash').delay(500).fadeIn('normal', function() {
+            $(this).delay(500).fadeOut();
+        });
+    });
 </script>
 </html>

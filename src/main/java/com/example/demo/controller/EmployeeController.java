@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class EmployeeController {
@@ -43,20 +44,19 @@ public class EmployeeController {
     }
 
     @PostMapping("/saveEmployee")
-    public String saveEmployee(@ModelAttribute("employee") Employee employee) {
-        System.out.println("Ovo je employee " + employee.getId());
+    public String saveEmployee(@ModelAttribute("employee") Employee employee, RedirectAttributes redirectAttributes) {
         employeeService.saveEmployee(employee);
+        redirectAttributes.addFlashAttribute("message", "Successfully saved!");
         return "redirect:/";
     }
 
     @PostMapping("/deleteEmployee")
-    public String deleteEmployee(@ModelAttribute("employee") Employee employee) {
+    public String deleteEmployee(@ModelAttribute("employee") Employee employee, RedirectAttributes redirectAttributes) {
         // todo: važne napomene
         // Model ne šalje th:object="${employee}", nego ono što se nalazi u inputu!!!!!!!!!!!
         // Dosta je poslati id i ovaj se može izbrisati(jer deleteEmployee() je dosta id za izbrisat)
-        System.out.println("aaaaaaaaaaaaaaa");
-        System.out.println("Ovo je employee " + employee.getFirstName());
         employeeService.deleteEmployee(employee);
+        redirectAttributes.addFlashAttribute("message", "Successfully deleted!");
         return "redirect:/";
     }
 }
