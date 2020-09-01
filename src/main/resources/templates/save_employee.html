@@ -1,0 +1,25 @@
+<div class="modal-dialog modal-sm fullModal" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h4 th:text="${employee.id} ? 'Edit ' + ${employee} : 'Add employee'"></h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <form action="#" th:action="@{/saveEmployee}" th:object="${employee}" method="POST" >
+                <input type="hidden" th:field="*{id}" />
+                <input type="text" th:field="*{firstName}" class="form-control mb-4 col-12" placeholder="First name">
+                <input type="text" th:field="*{lastName}" class="form-control mb-4 col-12" placeholder="Last name">
+                <input type="text" th:field="*{email}" class="form-control mb-4 col-12" placeholder="Email">
+                <button type="submit" class="btn btn-success col-6">
+                    <span th:text="${employee.id} ? 'Update employee' : 'Add employee'"></span>
+                </button>
+            </form>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
