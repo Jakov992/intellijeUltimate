@@ -1,12 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Employee;
 import com.example.demo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class EmployeeController {
@@ -38,5 +38,11 @@ public class EmployeeController {
     public String showFormDelete(@RequestParam(name = "id") Long employeeId, Model model) {
         model.addAttribute("employee", employeeService.getEmployeeById(employeeId));
         return "delete_employee";
+    }
+
+    @PostMapping("/saveEmployee")
+    public String saveEmployee(@ModelAttribute("employee") Employee employee) {
+        employeeService.saveEmployee(employee);
+        return "redirect:/";
     }
 }
