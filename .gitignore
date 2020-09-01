@@ -31,3 +31,13 @@ build/
 
 ### VS Code ###
 .vscode/
+
+bootstrap.min.css
+jQuery.js
+mvnw
+mvnw.cmd
+
+
+/.mvn/wrapper/MavenWrapperDownloader.java
+/.mvn/wrapper/maven-wrapper.properties
+/.mvn/wrapper/maven-wrapper.jar
